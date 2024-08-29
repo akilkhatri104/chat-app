@@ -1,3 +1,5 @@
+require('dotenv').config();
+
 const express = require('express')
 
 const app = express()
@@ -8,11 +10,11 @@ const server = require('http').createServer(app)
 const io = require('socket.io')(server)
 
 // Serve static files from the "frontend" directory
-app.use(express.static(path.join(__dirname, '../frontend')));
+app.use(express.static(path.join(__dirname, '/frontend')));
 
 // Default route to serve the index.html
 app.get('/', (req, res) => {
-  res.sendFile(path.join(__dirname, '../frontend', 'index.html'));
+  res.sendFile(path.join(__dirname, '/frontend', 'index.html'));
 });
 
 io.on('connection',(socket) => {
@@ -26,7 +28,7 @@ io.on('connection',(socket) => {
 })
 
 
-const PORT = process.env.PORT;
+const PORT = process.env.PORT || 5000;
 server.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}...`);
 });
