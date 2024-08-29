@@ -7,13 +7,7 @@ const path = require('path')
 
 const server = require('http').createServer(app)
 
-const io = require('socket.io')(server, {
-  cors: {
-    origin: "https://chat-app-iota-blue-86.vercel.app", // Replace with your Vercel domain
-    methods: ["GET", "POST"],
-  },
-  transports: ["polling"], // Add this line to use polling transport
-});
+const io = require('socket.io')(server);
 
 // Serve static files from the "frontend" directory
 app.use(express.static(path.join(__dirname, '/frontend')));
