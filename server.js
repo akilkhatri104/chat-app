@@ -7,7 +7,12 @@ const path = require('path')
 
 const server = require('http').createServer(app)
 
-const io = require('socket.io')(server)
+const io = require('socket.io')(server, {
+  cors: {
+    origin: "*", // Change this to your Vercel domain to restrict access
+    methods: ["GET", "POST"]
+  }
+});
 
 // Serve static files from the "frontend" directory
 app.use(express.static(path.join(__dirname, '/frontend')));
