@@ -9,9 +9,10 @@ const server = require('http').createServer(app)
 
 const io = require('socket.io')(server, {
   cors: {
-    origin: "*", // Change this to your Vercel domain to restrict access
-    methods: ["GET", "POST"]
-  }
+    origin: "https://chat-app-iota-blue-86.vercel.app", // Replace with your Vercel domain
+    methods: ["GET", "POST"],
+  },
+  transports: ["polling"], // Add this line to use polling transport
 });
 
 // Serve static files from the "frontend" directory

@@ -1,6 +1,6 @@
-
-
-const socket = io()
+const socket = io("https://chat-app-iota-blue-86.vercel.app", {
+    transports: ["polling"],
+  });
 
 const sendBtn = document.querySelector('#sendBtn')
 const chatInput = document.querySelector('#chatInput')
